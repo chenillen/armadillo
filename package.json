@@ -1,0 +1,45 @@
+{
+  "name": "armadillo",
+  "version": "0.1.0",
+  "author": "Allen Chan <chenillen@gmail.com> (https://allenchan.org)",
+  "description": "Modern SASS framework for small web project",
+  "main": "armadillo.sass",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenillen/armadillo.git"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "framework",
+    "web",
+    "responsive"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "captain-git-hook": "~1.0.5",
+    "node-sass": "^3.4.2",
+    "postcss-cli": "^2.5.1",
+    "rimraf": "^2.6.1"
+  },
+  "scripts": {
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix",
+    "build-autoprefix": "postcss --use autoprefixer --output css/armadillo.css css/armadillo.css",
+    "build-clean": "rimraf css",
+    "build-sass": "node-sass --output-style expanded --source-map true armadillo.sass css/armadillo.css",
+    "deploy": "npm run build && npm run docs",
+    "docs": "npm run docs-sass && npm run docs-autoprefix",
+    "docs-autoprefix": "postcss --use autoprefixer --output docs/css/armadillo-docs.css docs/css/armadillo-docs.css",
+    "docs-sass": "node-sass --output-style expanded docs/armadillo-docs.sass docs/css/armadillo-docs.css",
+    "start": "npm run build-sass -- --watch",
+    "start-docs": "npm run docs-sass -- --watch",
+    "start-test": "npm run test-sass -- --watch",
+    "test-sass": "node-sass --output-style expanded docs/armadillo-test.sass docs/css/armadillo-test.css"
+  },
+
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chenillen/armadillo/issues"
+  },
+  "homepage": "https://github.com/chenillen/armadillo#readme"
+}
